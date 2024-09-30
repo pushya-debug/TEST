@@ -20,11 +20,6 @@ if st.button("Load Data"):
     # Convert to DataFrame for better visualization
     df = pd.DataFrame(data, columns=["LOG_FILE_NAME", "LOG_FILE_ROW_ID", "LOAD_LTZ", "DATETIME_ISO8601", "USER_EVENT", "USER_LOGIN", "IP_ADDRESS"])
 
-    st.write(df)
-    
-    # Display unique USER_EVENT values for troubleshooting
-    st.write("Unique USER_EVENT values:", df['USER_EVENT'].unique())
-
     # Count logins and logouts (adjusting for case sensitivity)
     login_count = df[df['USER_EVENT'].str.lower() == 'login'].shape[0]
     logout_count = df[df['USER_EVENT'].str.lower() == 'logout'].shape[0]
