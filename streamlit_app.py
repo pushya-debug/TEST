@@ -21,6 +21,4 @@ if st.button("Load Data"):
     df = pd.DataFrame(data, columns=["LOG_FILE_NAME", "LOG_FILE_ROW_ID", "LOAD_LTZ", "DATETIME_ISO8601", "USER_EVENT", "USER_LOGIN", "IP_ADDRESS"])
     st.write(df)
 
-# Close the connection when the app stops
-if cnx:
-    cnx.close()
+# No need to close the connection; Streamlit manages it automatically.
