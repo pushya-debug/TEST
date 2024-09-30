@@ -22,9 +22,12 @@ if st.button("Load Data"):
 
     st.write(df)
     
-    # Count logins and logouts
-    login_count = df[df['USER_EVENT'] == 'LOGIN'].shape[0]
-    logout_count = df[df['USER_EVENT'] == 'LOGOUT'].shape[0]
+    # Display unique USER_EVENT values for troubleshooting
+    st.write("Unique USER_EVENT values:", df['USER_EVENT'].unique())
+
+    # Count logins and logouts (adjusting for case sensitivity)
+    login_count = df[df['USER_EVENT'].str.lower() == 'login'].shape[0]
+    logout_count = df[df['USER_EVENT'].str.lower() == 'logout'].shape[0]
 
     # Display counts
     st.write(f"Total Logins: {login_count}")
